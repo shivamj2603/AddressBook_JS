@@ -134,3 +134,7 @@ function editDetails(contact) {
             break;
     }
 }
+//UC5
+function deleteContact(name) {
+    addressBook.filter(c => (c.firstName + c.lastName == name));
+}
