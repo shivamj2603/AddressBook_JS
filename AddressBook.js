@@ -32,7 +32,7 @@ class Contact {
     }
     set lastName(lastName) {
         let lnameRegex = RegExp('^[A-Z]{1}[a-zA-z]{2,}$');
-        if (lnameRegex.test(lasstName)) {
+        if (lnameRegex.test(lastName)) {
             this._lastName = lastName;
         }
         else throw 'Last Name Incorrect';
@@ -70,7 +70,7 @@ class Contact {
     }
     set phoneNumber(phoneNumber) {
         let phoneRegex = RegExp('^[1-9]{1}[0-9]{9}$');
-        if (phoneRegex.test(this.phoneNumber)) {
+        if (phoneRegex.test(phoneNumber)) {
             this._phoneNumber = this.phoneNumber;
         }
         else throw 'Invalid Phone Number';
@@ -90,4 +90,3 @@ class Contact {
             '\nState : ' + this.state + '\nZip : ' + this.zip + '\nphoneNumber : ' + this.phoneNumber + '\nEmail : ' + this.email;
     }
 }
-
