@@ -191,4 +191,20 @@ function compare(contact1, contact2) {
 }
 function sortByName() {
     let sortedByName = addressBook.sort(compare);
+    return sortedByName;
+}
+//UC12
+function compareByCity(contact1, contact2) {
+    let a = contact1.city.toUpperCase();
+    let b = contact2.city.toUpperCase();
+    if (a > b) {
+        return 1;
+    }
+    else {
+        return -1;
+    }
+}
+function sortByCity() {
+    let sortedByCity = addressBook.sort(compareByCity);
+    return sortedByCity;
 }
