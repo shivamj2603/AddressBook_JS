@@ -108,7 +108,12 @@ class Contact {
 //UC3
 var addressBook = new Array();
 function addContact(contact) {
-    addressBook.push(contact);
+    if (!checkContact(contact.firstName + contact.lastName)) {
+        addressBook.push(contact);
+    }
+    else {
+        console.log('Contact already exists');
+    }
 }
 let contact = new Contact();
 addContact(contact.createContact());
@@ -141,4 +146,12 @@ function deleteContact(name) {
 //UC6
 function contactSize() {
     return addressBook.length;
+}
+//UC7
+function checkContact(name) {
+    addressBook.forEach(c => {
+        if (c.firstName + c.lastName == name) {
+            return false;
+        }
+    });
 }
