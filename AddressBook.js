@@ -155,6 +155,13 @@ function checkContact(name) {
         }
     });
 }
+//UC8
+function searchInCity(city, name) {
+    return addressBook.filter(c => (c.city == city)).filter(c => (c.firstName + c.lastName == name));
+}
+function searchInState(state, name) {
+    return addressBook.filter(c => (c.state == state)).filter(c => (c.firstName + c.lastname == name));
+}
 //UC9
 function getContactByCity(city) {
     addressBook.filter(c => (c.city == city)).forEach(c => console.log(c.firstName + ' ' + c.lastName));
