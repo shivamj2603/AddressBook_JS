@@ -155,3 +155,10 @@ function checkContact(name) {
         }
     });
 }
+//UC9
+function getContactByCity(city) {
+    addressBook.filter(c => (c.city == city)).forEach(c => console.log(c.firstName + ' ' + c.lastName));
+}
+function getContactByState(state) {
+    addressBook.filter(c => (c.state == state)).forEach(c => console.log(c.firstName + ' ' + c.lastName));
+}
