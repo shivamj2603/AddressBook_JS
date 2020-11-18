@@ -1,13 +1,5 @@
 var prompt = require('prompt-sync')();
 class Contact {
-    firstName;
-    lastName;
-    address;
-    city;
-    state;
-    zip;
-    phoneNumber;
-    email;
     constructor(...params) {
         this.firstName = params[0];
         this.lastName = params[1];
@@ -26,7 +18,9 @@ class Contact {
         if (fnameRegex.test(firstName)) {
             this._firstName = firstName;
         }
-        else throw 'First Name Incorrect';
+        else {
+            throw 'First Name Incorrect';
+        }
     }
     get lastName() {
         return this._lastName;
@@ -36,7 +30,9 @@ class Contact {
         if (lnameRegex.test(lastName)) {
             this._lastName = lastName;
         }
-        else throw 'Last Name Incorrect';
+        else {
+            throw 'Last Name Incorrect';
+        }
     }
     get address() {
         return this._address;
@@ -64,7 +60,9 @@ class Contact {
         if (zipRegex.test(zip)) {
             this._zip = zip;
         }
-        else throw 'Invalid Zip Code';
+        else {
+            throw 'Invalid Zip Code';
+        }
     }
     get phoneNumber() {
         return this._phoneNumber;
@@ -74,7 +72,9 @@ class Contact {
         if (phoneRegex.test(phoneNumber)) {
             this._phoneNumber = this.phoneNumber;
         }
-        else throw 'Invalid Phone Number';
+        else {
+            throw 'Invalid Phone Number';
+        }
     }
     get email() {
         return this._email;
@@ -84,26 +84,27 @@ class Contact {
         if (emailRegex.test(email)) {
             this._email = email;
         }
-        else throw 'Invalid Email';
-    }
-    createContact() {
-        this.firstName = prompt('Enter the first name');
-        this.lastName = prompt('Enter the last name');
-        this.address = prompt('Enter the address');
-        this.city = prompt('Enter the city');
-        this.state = prompt('Enter the state');
-        this.zip = prompt('Enter the zipcode');
-        this.phoneNumber = prompt('Enter the phone number');
-        this.email = prompt('Enter the email');
-        let contact = new Contact(this.firstName, this.lastName, this.address, this.city, this.state, this.zip,
-            this.phoneNumber, this.email);
-        return contact;
-
+        else {
+            throw 'Invalid Email';
+        }
     }
     toString() {
         return '\nName : ' + this.firstName + ' ' + this.lastName + '\nAddress : ' + this.address + '\nCity : ' + this.city +
             '\nState : ' + this.state + '\nZip : ' + this.zip + '\nphoneNumber : ' + this.phoneNumber + '\nEmail : ' + this.email;
     }
+}
+function createContact() {
+    this.firstName = prompt('Enter the first name');
+    this.lastName = prompt('Enter the last name');
+    this.address = prompt('Enter the address');
+    this.city = prompt('Enter the city');
+    this.state = prompt('Enter the state');
+    this.zip = prompt('Enter the zipcode');
+    this.phoneNumber = prompt('Enter the phone number');
+    this.email = prompt('Enter the email');
+    let contact = new Contact(this.firstName, this.lastName, this.address, this.city, this.state, this.zip,
+        this.phoneNumber, this.email);
+    return contact;
 }
 //UC3
 var addressBook = new Array();
@@ -115,8 +116,8 @@ function addContact(contact) {
         console.log('Contact already exists');
     }
 }
-let contact = new Contact();
-addContact(contact.createContact());
+let newContact = createContact();
+addContact(newContact);
 console.log(addressBook);
 //UC4
 function editContact(name) {
@@ -174,7 +175,7 @@ function getContactSizeByCity(city) {
     let list = getContactByCity(city);
     return list.length;
 }
-function getContactSizeByStae(state) {
+function getContactSizeByState(state) {
     let list = getContactByState(state);
     return list.length;
 }
@@ -182,12 +183,7 @@ function getContactSizeByStae(state) {
 function compare(contact1, contact2) {
     let a = contact1.firstName.toUpperCase();
     let b = contact2.firstName.toUpperCase();
-    if (a > b) {
-        return 1;
-    }
-    else {
-        return -1;
-    }
+    return a - b;
 }
 function sortByName() {
     let sortedByName = addressBook.sort(compare);
@@ -197,12 +193,7 @@ function sortByName() {
 function compareByCity(contact1, contact2) {
     let a = contact1.city.toUpperCase();
     let b = contact2.city.toUpperCase();
-    if (a > b) {
-        return 1;
-    }
-    else {
-        return -1;
-    }
+    return a - b;
 }
 function sortByCity() {
     let sortedByCity = addressBook.sort(compareByCity);
